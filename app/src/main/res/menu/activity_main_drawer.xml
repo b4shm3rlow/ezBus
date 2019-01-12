@@ -6,33 +6,12 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/buttonLogin"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_menu_login"
             android:title="Login"/>
         <item
             android:id="@+id/buttonMap"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_menu_map"
             android:title="Mappa" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Prova" />
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Prova" />
     </group>
-
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Prova" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Prova" />
-        </menu>
-    </item>
 
 </menu>
