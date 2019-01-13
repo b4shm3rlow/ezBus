@@ -1,10 +1,13 @@
 package com.example.piata.ezbus;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,7 +15,7 @@ import android.view.MenuItem;
 import android.widget.FrameLayout;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private BottomNavigationView mMainNav;
     private FrameLayout mMainFrame;
@@ -59,6 +62,9 @@ public class MainActivity extends AppCompatActivity {
         mToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
         setFragment(mapFragment);
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.main_nav);
@@ -79,4 +85,18 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        int id = menuItem.getItemId();
+        if (id == R.id.nav_login) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+        }
+        DrawerLayout drawer = findViewById(R.id.drag_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
 }
