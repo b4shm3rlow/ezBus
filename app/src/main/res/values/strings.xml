@@ -6,6 +6,8 @@
     <string name="nav_header_subtitle">"Esegui l'accesso"</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Impostazioni</string>
+    <string name="open">Apri</string>
+    <string name="close">Chiudi</string>
     <string name="facebook_app_id">277094229620501</string>
     <string name="fb_login_protocol_scheme">fb277094229620501</string>
     <string name="title_activity_maps">Map</string>

@@ -1,24 +1,15 @@
 package com.example.piata.ezbus;
 
-import android.Manifest;
-import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.NavigationView;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
-import android.widget.TextView;
-import android.support.v7.widget.Toolbar;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -28,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
     private MapFragment mapFragment;
     private PocketFragment pocketFragment;
     private BuyFragment buyFragment;
+    private DrawerLayout mDrawerLayout;
+    private ActionBarDrawerToggle mToggle;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -60,6 +53,12 @@ public class MainActivity extends AppCompatActivity {
         pocketFragment = new PocketFragment();
         buyFragment = new BuyFragment();
 
+        mDrawerLayout = findViewById(R.id.drag_layout);
+        mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open, R.string.close);
+        mDrawerLayout.addDrawerListener(mToggle);
+        mToggle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         setFragment(mapFragment);
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.main_nav);
@@ -73,4 +72,11 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (mToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
